@@ -98,9 +98,17 @@ go run golang.org/x/vuln/cmd/govulncheck@latest ./...
 go run golang.org/x/exp/cmd/gorelease@latest        # libraries: API check + version suggestion
 ```
 
-Then:
+Then commit, push to mainline, and gate on CI before tagging:
 
 ```bash
+# 1. Commit and push release manifests to mainline
+git commit -m "chore(release): prepare v1.4.0 release manifests and documentation"
+git push origin main
+
+# 2. Wait for mainline CI pipeline to pass (do NOT push tag in parallel!)
+gh run watch $(gh run list --branch main --limit 1 --json databaseId -q '.[0].databaseId')
+
+# 3. ONLY after CI is 100% green, create and push the annotated tag
 git tag -a v1.4.0 -m "v1.4.0"    # annotated tag, full semver, leading v
 git push origin v1.4.0
 ```
