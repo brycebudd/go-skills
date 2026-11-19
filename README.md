@@ -27,13 +27,22 @@ It strips away the noise and focuses on the actual architectures used by the Go 
 
 ## The Playbooks
 
+Skills follow a **Progressive Disclosure** layout: each `SKILL.md` stays concise with core rules and patterns, while deep-dive guides live in `references/` and are loaded on demand.
+
 ### 1. [General Go Patterns](./go/SKILL.md)
 
 The core language idioms. This covers fundamental Go philosophy, proper interface design, standard-library-compliant testing, and concurrency patterns. **Stop writing Java in Go.** Read this first.
 
+- [Architecture, Packages, Interfaces & Error Handling](./go/references/architecture-and-apis.md)
+- [Concurrency, Testing & Toolchain Debugging](./go/references/concurrency-and-testing.md)
+- [Standard Library, Generics, HTTP, Syntax & Logging](./go/references/stdlib-and-http.md)
+
 ### 2. [CLI Architecture: Cobra & Viper](./cobra-viper/SKILL.md)
 
 The definitive guide to building modern command-line applications. This covers the "Command-First" architecture, 12-factor configuration, and how to structure your application using Cobra and Viper exactly as they were intended to be used.
+
+- [Cobra Best Practices & Version Handling](./cobra-viper/references/cobra-patterns.md)
+- [Viper Config, CLI Testing & Common Mistakes](./cobra-viper/references/viper-and-testing.md)
 
 ### 3. [Spec Review](./go-spec-reviewer/SKILL.md)
 
@@ -50,6 +59,9 @@ Building native desktop applications in Go with Wails. Covers both v2 (stable) a
 ### 6. [File Operations: fileflow & pathologize](./fileflow-pathologize/SKILL.md)
 
 Safe cross-filesystem file operations using `spf13/fileflow` (move, copy, rename with conflict-safe naming) and `spf13/pathologize` (sanitize filenames and path segments for every OS). Use whenever Go code moves, copies, renames, downloads, or extracts files, or builds paths from untrusted input.
+
+- [`fileflow` API, `Flow` Config, Naming Strategies & Errors](./fileflow-pathologize/references/fileflow-api.md)
+- [`pathologize` API, Path-Traversal Defense & Common Mistakes](./fileflow-pathologize/references/pathologize-api.md)
 
 ## Installation
 
